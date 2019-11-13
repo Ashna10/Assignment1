@@ -7,14 +7,14 @@
 
 <!-- versionCode is optional and Android only -->
 
-  <name>My Calculator</name>
+  <name>Sober O'clock</name>
 
   <description>
-      A very simple calculator, which serves as an example.
+      Alcohol Awareness for Teenagers
   </description>
 
-  <author href="https://build.phonegap.com" email="geerish.suddul@gmail.com">
-      Geerish Suddul
+  <author href="https://build.phonegap.com" email="ashnagukhool@icloud.com">
+      Ashna Palveena Gukhool
   </author>
 
 
@@ -42,14 +42,6 @@
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.3.3" />
     <plugin name="cordova-plugin-vibration"           source="npm" spec="~2.1.5" />
 
-   <platform name="android">
-       	<icon   src="img/calc_ico.png"               density="ldpi" />
-        <icon   src="img/calc_ico.png"               density="mdpi" />
-        <icon   src="img/calc_ico.png"               density="hdpi" />
-        <icon   src="img/calc_ico.png"               density="xhdpi" />
-        <icon   src="img/calc_ico.png"               density="xxhdpi" />
-        <icon   src="img/calc_ico.png"               density="xxxhdpi" />
-   </platform>
 
 
 </widget>
