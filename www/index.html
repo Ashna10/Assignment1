@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Sober O'clock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" href="Style.css">
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+
+    <!-- Using leaflet : maps -->
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <script src="leaflet/leaflet.js"></script>
+
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include the jQuery Mobile library -->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="js/databaseHandler.js"></script>
+    <script type="text/javascript" src="js/productHandler.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+</head>
+
+<body onload="addProduct();">
+
+    <!--Page 1: Welcome page-->
+    <div data-role="page">
+
+        <!--header-->
+        <div data-role="header" data-theme="a" class="heading">
+            <h1>Sober O'clock</h1>
+        </div>
+
+        <!-- Content-->
+        <div role="main" class="ui-content">
+            <h2 class="text-center">Welcome!</h2>
+            <p class="x"><b>Existing Users</b></p>
+            <a href="#SignIn" class="ui-btn ui-corner-all SignIn" id="Sign">Sign In</a>
+            <p class="x"><b>Don't have an account?</b></p>
+            <a href="#SignUp" class="ui-btn ui-corner-all" id="Sign">Sign Up</a>
+            <p></p>
+        </div>
+
+        <!-- Footer -->
+
+    </div>
+    <!-- /page 1 -->
+
+    <!-- Page 2: Sign In Page -->
+    <div data-role="page" id="SignIn" data-theme="a">
+        <div data-role="header" data-theme="c" class="heading">
+            <a href="#" data-rel="back" class="ui-btn-left ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back" id="btnBack">Back</a>
+            <h1>Sober O'clock</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <h3 class="x">Sign In</h3>
+            <label for="txtEmail">Email Address</label>
+            <input type="text" name="txtEmail" id="txt-email" value="">
+            <label for="txtPass">Password</label>
+            <input type="password" name="txtPass" id="txtPass" value="">
+            <fieldset data-role="controlgroup">
+                <input type="checkbox" name="check-RememberMe" id="check-RememberMe" checked="">
+                <label for="check-RememberMe">Remember me</label>
+            </fieldset>
+            <a href="#PagePanel1" class="ui-btn ui-corner-all" id="Sign">Sign In</a>
+
+            <!--a href="#credentialsInvalid" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="x ui-btn ui-corner-all">Submit</a>
+                  <p><a href="#">Can't access your account?</a></p>
+                  <div data-role="popup" id="credentialsInvalid" style="max-width:400px;">
+                      <div role="main" class="ui-content">
+                          <h3 class="text-danger">Login Failed</h3>
+                          <p>Did you enter the right credentials?</p>
+                          <div class="text-center"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow" id="btnOk">OK</a></div>
+                      </div> -->
+
+
+        </div>
+    </div>
+    <!-- /page 2 -->
+
+    <!-- Page 3: Sign Up Page -->
+    <div data-role="page" id="SignUp" data-theme="a">
+        <div data-role="header" data-theme="c" class="heading">
+            <a href="#" data-rel="back" class="ui-btn-left ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back" id="btnBack">Back</a>
+            <h1>Sober O'clock</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <h3 class="x">Sign Up</h3>
+            <label for="txtfirstname">First Name</label>
+            <input type="text" name="txtfirstname" id="txtfirstname" value="">
+            <label for="txtLastname">Last Name</label>
+            <input type="text" name="txtlastname" id="txtlastname" value="">
+            <label for="txtEmail">Email Address</label>
+            <input type="text" name="txtEmail" id="txtEmail" value="">
+
+            <p>Please select your gender -</p>
+
+            <div>
+                <input type="radio" id="male" name="gender" value="male" checked>
+                <label for="male">Male</label>
+
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+
+
+            <label for="txtPassword">Password</label>
+            <input type="password" name="txtPassword" id="txtPassword" value="">
+            <label for="TxtConPassword">Confirm Password</label>
+            <input type="password" name="txtConPassword" id="txtConPassword" value="">
+            <a href="#SignIn" class="ui-btn ui-corner-all" id="Sign">Sign Up</a>
+            <!--a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="x ui-btn ui-btn-b ui-corner-all">Submit</a>
+    <div data-role="popup" id="dlg-sign-up-sent" data-dismissible="false" style="max-width:400px;">
+        <div data-role="header">
+            <h1>Almost done...</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <h3>Confirm Your Email Address</h3>
+            <p>We sent you an email with instructions on how to confirm your email address. Please check your inbox and follow the instructions in the email.</p>
+            <div class="mc-text-center"><a href="sign-in.html" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5">OK</a></div>
+        </div>
+    </div-->
+
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page 3 -->
+
+    <!-- Page 4 : HOME-->
+    <div data-role="page" id="PagePanel1" data-theme="a">
+
+        <!-- Header -->
+        <div data-role="header" id="heading">
+            <h1>Sober O'clock</h1>
+            <a href="#Menubtn" data-icon="bars" data-iconpos="notext" data-theme="b" data-incline="true" id="btnMenu">Menu</a>
+
+            <div data-role="panel" data-display="overlay" data-theme="b" id="Menubtn">
+                <ul data-role="listview" data-inset="false">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#PanelPage1">Home</a></li>
+                    <li><a href="#loadpage">Facts</a></li>
+                    <input class="MyButton" type="button" value="Your Text Here" onclick="window.location.href='#loadpage'"/>
+                    <li><a href="#ApiPage">Advice</a></li>
+                    <li><a href="#mappage">Rehabilitation Map</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#SignIn">Sign Out</a></li>
+                </ul>
+            </div>
+
+            <!--a href="#Searchform" data-icon="search" data-iconpos="notext" data-theme="b" data-incline="true">search</a-->
+            <a href="#Search" data-icon="search" data-iconpos="notext" data-theme="b" data-incline="true" data-rel="popup" data-position-to="origin" data-transition="flip" id="btnSearch">Search</a>
+            <div data-role="popup" id="Search" data-theme="a" class="ui-corner-all">
+                <form>
+                    <div style="padding:10px 20px;">
+                        <label for="search-basic">Search Input:</label>
+                        <input type="search" name="search" id="search-basic" value="" />
+                        <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Search</button>
+                    </div>
+                </form>
+            </div>
+
+            <img src="Img/TeenAlc.jpg" alt="Teen Alcohol" class="PageBanner">
+        </div>
+
+
+        <!-- Content -->
+        <div role="main" class="ui-content">
+            <h2 class="xy">Teenage Alcoholism</h2>
+
+            <p class="y">
+                Teens that begin drinking at an early age put themselves at risk for many immediate consequences. Injury, assault, and vehicular accidents are just a few of the potential dangers of consuming alcohol. In addition, teens consuming alcohol are more
+                likely to engage in risky sexual behaviors, resulting in a potential unplanned pregnancy or a sexually transmitted disease. Parents likely worry most about these types of consequences associated with alcohol consumption. However, in some cases,
+                the alcohol consumption itself can result in a life-threatening condition
+            </p>
+
+            <h2 class="xy">Dangers And Fatalities</h2>
+            <p class="y">
+                Alcohol is often involved in the top three causes of death among teens: accidents, suicide and homicide.
+                In addition, teenaged males who drove with an illegal level of blood alcohol content were more likely to die when compared with sober drivers of the same age.
+                There are additional concerns with acute alcohol ingestion, such as respiratory depression, a condition that can be life-threatening.
+                Sufferers can also suffer from diarrhea, nausea and vomiting, as well as hepatitis and pancreatitis.
+            <p>
+                <div id="player"></div>
+
+                    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'sNFrQ6ixAnM',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
+        </div>
+
+        <!-- Footer -->
+        <div data-role="footer">
+            <h2><em>Copyright &copy; 2019 All Rights Reserved</em></h2>
+        </div>
+
+    </div>
+    <!-- /Page 4-->
+
+    <div data-role="page" id="addpages">
+<!--     <div data-role="panel" id="addPagePanel">
+        <h1>Menu</h1>
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Product</li>
+            <li data-icon="plus"><a href="#addpage">Add</a></li>
+            <li data-icon="grid"><a href="#loadpage">Load</a></li>
+        </ul>
+    </div>
+    <div data-role="header" data-position="fixed">
+        <a href="#addPagePanel"
+           class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+        <h1>Add product</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <form>
+            <div class="ui-field-contain">
+                <label for="txtName">Name:</label>
+                <input type="text" id="txtName" data-clear-btn="true"/>
+                <label for="txtQuantity">Quantity:</label>
+                <input type="number" id="txtQuantity" data-clear-btn="true"/>
+                <label for="btnAdd"></label> -->
+                <a class="ui-btn ui-icon-plus ui-btn-icon-left"
+                   id="btnAdd" onclick="addProduct()">Add</a>
+                   <input class="MyButton" type="button" value="Your Text Here" onclick="window.location.href='#loadpage'" />
+<!--             </div>
+        </form>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <h1>WWW.VTGAMES.VN</h1>
+    </div> -->
+</div>
+<div data-role="page" id="loadpage">
+    <div data-role="panel" id="loadPagePanel">
+
+        <h1>Menu</h1>
+<!--         <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Product</li>
+            <li data-icon="plus"><a href="#addpage">Add</a></li>
+            <li data-icon="grid"><a href="#loadpage">Load</a></li>
+        </ul> -->
+
+
+                <ul data-role="listview" data-inset="false">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#PanelPage1">Home</a></li>
+                    <li><a href="#">Facts</a></li>
+                    <input class="MyButton" type="button" value="Facts" onclick="window.location.href='#loadpage'" />
+                    <li><a href="#">Advice</a></li>
+                    <li><a href="#mapPagePanel">Rehabilitation Map</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#SignIn">Sign Out</a></li>
+                </ul>
+
+
+    </div>
+    <div data-role="header" data-position="fixed">
+        <a href="#loadPagePanel"
+           class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+        <h1>Load products</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <form class="ui-filterable">
+            <input data-type="search" id="txtKeyword"/>
+        </form>
+        <ul data-role="listview" data-filter="true"
+            data-input="#txtKeyword"
+            data-inset="true"
+            id="lstProducts"
+        >
+        </ul>
+        <div data-role="popup" id="popupUpdateDelete">
+            <div data-role="header">
+                <a class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" data-rel="back"></a>
+                <h1>Options</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <a class="ui-btn ui-icon-delete ui-btn-icon-left ui-btn-inline"
+                   onclick="deleteProduct()"
+                >Delete</a>
+                <a class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline"
+                   href="#updatedialog"
+                >Update</a>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <input class="MyButton" type="button" value="Go Home" onclick="window.location.href='#PagePanel1'" />
+    </div>
+</div>
+
+<div data-role="dialog" id="updatedialog">
+    <div data-role="header">
+        <h1>Update product</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <form>
+            <div class="ui-field-contain">
+                <label for="txtNewName">Name:</label>
+                <input type="text" id="txtNewName" data-clear-btn="true"/>
+                <label for="txtNewQuantity">Quantity:</label>
+                <input type="number" id="txtNewQuantity" data-clear-btn="true"/>
+                <label for="btnUpdate"></label>
+                <a class="ui-btn ui-icon-plus ui-btn-icon-left"
+                   id="btnUpdate" onclick="updateProduct()">Update</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div data-role="page" id="mappage">
+    <div id="mapid" style="width: 1000px; height: 600px; margin: auto;"></div>
+    <div data-role="panel" id="mapPagePanel">
+        <h1>Menu</h1>
+<!--         <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Product</li>
+            <li data-icon="plus"><a href="#addpage">Add</a></li>
+            <li data-icon="grid"><a href="#loadpage">Load</a></li>
+        </ul> -->
+
+
+                <ul data-role="listview" data-inset="false">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#PanelPage1">Home</a></li>
+                    <li><a href="#">Facts</a></li>
+                    <input class="MyButton" type="button" value="Facts" onclick="window.location.href='#loadpage'" />
+                    <li><a href="#">Advice</a></li>
+                    <li><a href="#">Rehabilitation Map</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#SignIn">Sign Out</a></li>
+                </ul>
+
+
+    </div>
+    <div data-role="header" data-position="fixed">
+        <a href="#loadPagePanel"
+           class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+        <h1>Load products</h1>
+    </div>
+
+
+    <script>
+
+
+        // MAP CODE
+
+
+        if (navigator.geolocation == undefined) {
+            alert("Geolocation undefined");
+        } else {
+            //alert("Geolocation Available");
+            navigator.geolocation.getCurrentPosition(userLocated, locationError); // VERY IMPORTANT used to get location, may get for exam
+
+            function userLocated(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                var mymap = L.map('mapid').setView([latitude, longitude], 10);
+
+                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                    maxZoom: 19,
+
+                    attribution: 'Map data &copy;' +
+                        '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>' +
+                        'contributors,<a href="https://creativecommons.org/licenses' +
+                        '/by-sa/2.0/">CC-BY-SA</a>,Imagery © <a href="https://' +
+                        'www.mapbox.com/">Mapbox</a>',
+
+                    id: 'mapbox.streets',
+
+                    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYyc' +
+                        'XBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+                }).addTo(mymap);
+
+
+                //Quatre Bornes
+                var quatreBornesMarker = L.marker([-20.268635, 57.470776]).addTo(mymap);
+
+                quatreBornesMarker.bindPopup("Quatre Bornes Rehab Centre \n Tel No : 54266212");
+
+                // Adding a circle on the map
+
+                var circle = L.circle([-20.268635, 57.470776], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 100
+                }).addTo(mymap);
+                //circle.bindPopup("You may find the treasure around here");
+
+                //rose hill
+                var roseHillMarker = L.marker([-20.225911, 57.467725]).addTo(mymap);
+
+                roseHillMarker.bindPopup("Rose Hill Rehab Centre \n Tel No : 54269252");
+
+                // Adding a circle on the map
+
+                var circle = L.circle([-20.225911, 57.467725], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 100
+                }).addTo(mymap);
+                //circle.bindPopup("You may find the treasure around here");
+
+
+                //port louis
+                var portlouisMarker = L.marker([-20.164196, 57.497840]).addTo(mymap);
+
+                portlouisMarker.bindPopup("Port louis Rehab Centre \n Tel No : 59846212");
+
+                // Adding a circle on the map
+
+                var circle = L.circle([-20.164196, 57.497840], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 100
+                }).addTo(mymap);
+                //circle.bindPopup("You may find the treasure around here");
+
+                //saint pierre
+                var portlouisMarker = L.marker([-20.216722, 57.525637]).addTo(mymap);
+
+                portlouisMarker.bindPopup("Saint Pierre Rehab Centre \n Tel No : 59781515");
+
+                // Adding a circle on the map
+
+                var circle = L.circle([-20.216722, 57.525637], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 100
+                }).addTo(mymap);
+                //circle.bindPopup("You may find the treasure around here");
+
+            }
+
+
+            function locationError(error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("Permission Denied-" + error.message);
+                        break;
+
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Position Not Available-" + error.message);
+                        break;
+
+                    case error.TIMEOUT:
+                        alert("Request Time out-" + error.message);
+                        break
+
+                }
+            }
+        }
+    </script>
+    <div data-role="footer" data-position="fixed">
+        <input class="MyButton" type="button" value="Go Home" onclick="window.location.href='#PagePanel1'" />
+    </div>
+</div>
+
+<div data-role="page" id="ApiPage">
+    <div data-role="panel" id="ApiPagePanel">
+
+        <h1>Menu</h1>
+<!--         <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Product</li>
+            <li data-icon="plus"><a href="#addpage">Add</a></li>
+            <li data-icon="grid"><a href="#loadpage">Load</a></li>
+        </ul> -->
+
+
+                <ul data-role="listview" data-inset="false">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
+                    <li><a href="#PanelPage1">Home</a></li>
+                    <li><a href="#">Facts</a></li>
+                    <input class="MyButton" type="button" value="Facts" onclick="window.location.href='#loadpage'" />
+                    <li><a href="#">Advice</a></li>
+                    <li><a href="#mapPagePanel">Rehabilitation Map</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#SignIn">Sign Out</a></li>
+                </ul>
+
+
+    </div>
+    <div data-role="header" data-position="fixed">
+        <a href="#loadPagePanel"
+           class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+        <h1>Load products</h1>
+    </div>
+
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'sNFrQ6ixAnM',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
+
+    <table>
+ <tr onclick="window.open('tel:900300400');">
+  <td>HOTLINE: 900 300 400</td>
+ </tr>
+</table>
+
+<a href = "https://www.verywellmind.com/could-you-have-an-alcohol-abuse-problem-3894213?quizResult=6817926b">Drink Assessment</a>
+
+    <div data-role="footer" data-position="fixed">
+        <input class="MyButton" type="button" value="Go Home" onclick="window.location.href='#PagePanel1'" />
+    </div>
+</div>
+
+
+</body>
+
+</html>

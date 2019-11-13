@@ -1,0 +1,40 @@
+.heading, #heading{
+  background-color:#222731;
+  color: #F05E23;
+  font-family: verdana;
+  font-size: 15px;
+}
+
+.PageBanner {
+    width: 100%;
+    height: auto;
+}
+/* aligne text center */
+.text-center {
+    text-align:center;
+    color: #F05E23;
+}
+.x{
+  margin-top: 30px;
+  color: #111e6c;
+}
+.y{
+  color: #3c3c3a;
+  font-family: Helvetica;
+  line-height: 25px;
+}
+.xy{
+  color: #F05E23;
+}
+#Sign, #btn-submit, #btnOk, #btnBack, #btnMenu, #btnSearch{
+  background-color: #F05E23;
+  color: white;
+  font-size: 15px;
+  font-weight: 100;
+  font-family: verdana;
+  border: 0;
+  outline: 0;
+}
+.text-danger{
+  color: Red;
+}
